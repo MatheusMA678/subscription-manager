@@ -9,10 +9,10 @@ export const Apresentation = ({ navigation }) => {
   return (
     <View className="flex-1 justify-between items-center bg-bgColor p-4">
       <View className="mt-20">
-        <Text className="px-4 text-5xl text-white font-title2 text-center mb-6">
+        <Text className="px-4 text-5xl text-white font-RHDSemi text-center mb-6">
           Manage all your subscriptions
         </Text>
-        <Text className="text-2xl font-primary text-gray-400 text-center px-4">
+        <Text className="text-2xl font-RHDRegular text-gray-400 text-center px-4">
           Keep regular expenses on hand and receive timely notifications of
           upcoming fees
         </Text>
@@ -22,7 +22,7 @@ export const Apresentation = ({ navigation }) => {
         activeOpacity={0.7}
         onPress={handlePress}
       >
-        <Text className="text-white font-title2 text-xl">Get started</Text>
+        <Text className="text-white font-RHDSemi text-xl">Get started</Text>
       </TouchableOpacity>
 
       <StatusBar

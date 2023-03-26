@@ -7,6 +7,7 @@ import { Apresentation } from "./src/screens/Apresentation";
 import { HeaderButton } from "./src/components/Home/HeaderButton";
 import "react-native-gesture-handler";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { MySabs } from "./src/screens/MySabs";
 
 const Drawer = createDrawerNavigator();
 
@@ -15,6 +16,8 @@ const Stack = createNativeStackNavigator();
 function App() {
   const [isLoaded] = useFonts({
     UBold: require("./assets/fonts/Unbounded/Unbounded-Bold.ttf"),
+    USemi: require("./assets/fonts/Unbounded/Unbounded-SemiBold.ttf"),
+    URegular: require("./assets/fonts/Unbounded/Unbounded-Regular.ttf"),
     RHDRegular: require("./assets/fonts/RHDisplay/RedHatDisplay-Regular.ttf"),
     RHDBold: require("./assets/fonts/RHDisplay/RedHatDisplay-Bold.ttf"),
     RHDSemi: require("./assets/fonts/RHDisplay/RedHatDisplay-SemiBold.ttf"),
@@ -24,35 +27,32 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Apresentation">
-        <Drawer.Screen
+      <Stack.Navigator
+        screenOptions={{
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: "#18181C",
+          },
+          headerTitleStyle: {
+            color: "white",
+            fontFamily: "RHDSemi",
+          },
+          headerLeft: () => <HeaderButton iconName="menu" />,
+          headerRight: () => <HeaderButton iconName="notifications-outline" />,
+          headerTitleAlign: "center",
+        }}
+        initialRouteName="Apresentation"
+      >
+        <Stack.Screen
           options={{
             headerShown: false,
           }}
           name="Apresentation"
           component={Apresentation}
         />
-        <Drawer.Screen
-          options={{
-            headerShadowVisible: false,
-            headerStyle: {
-              backgroundColor: "#18181C",
-            },
-            headerTitle: "General",
-            headerTitleStyle: {
-              color: "white",
-              fontFamily: "RHDSemi",
-            },
-            headerLeft: () => <HeaderButton iconName="menu" />,
-            headerRight: () => (
-              <HeaderButton iconName="notifications-outline" />
-            ),
-            headerTitleAlign: "center",
-          }}
-          name="Home"
-          component={Home}
-        />
-      </Drawer.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="MySabs" component={MySabs} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
